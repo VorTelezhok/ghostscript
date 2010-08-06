@@ -1,0 +1,4 @@
+include COPYING
+include README.txt
+recursive-include tests *.xml *.py
+recursive-include doc *.html *.1

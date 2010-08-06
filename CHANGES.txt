@@ -1,0 +1,9 @@
+.. -*- mode: rst ; ispell-local-dictionary: "american" -*-
+
+Changes
+==================
+
+:0.1 (2010-08-06):
+
+  * This is the first public release of the Python Ghostscript Library
+    interface.
