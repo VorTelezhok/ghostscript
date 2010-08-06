@@ -9,7 +9,7 @@ Python-Interface to the Ghostscript library
 ---------------------------------------------------------------------
 
 :Author:  Hartmut Goebel <h.goebel@crazy-compiler.com>
-:Version: Version 0.1
+:Version: Version 0.2dev
 :Copyright: GNU Public License v3 (GPLv3)
 
 ..
