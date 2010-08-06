@@ -1,4 +1,6 @@
 include COPYING
 include README.txt
+exclude .hgignore
+exclude .hgtags
 recursive-include tests *.xml *.py
 recursive-include doc *.html *.1
