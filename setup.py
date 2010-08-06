@@ -47,7 +47,7 @@ setup(
     license = "GPL 3.0",
     keywords = "Ghostscript, PDF, Postscript",
     url          = "http://bitbucket.org/htgoebel/python-ghostscript",
-    #download_url = "http://pypi.python.org/pypi/ghostscript",
+    download_url = "http://pypi.python.org/pypi/ghostscript",
     classifiers = [
     'Development Status :: 4 - Beta',
     'Intended Audience :: Developers',
