@@ -74,12 +74,10 @@ class Ghostscript(object):
             self.exit()
             
     def __del__(self):
-        print >> sys.stderr, 'deleting'
         self.exit()
         
     def exit(self):
         if self._initialized:
-            print >> sys.stderr, 'exiting'
             gs.exit(self._instance)
             self._initialized = False
 
@@ -93,7 +91,7 @@ class Ghostscript(object):
         """
         instance = self._instance
         if len(str) < MAX_STRING_LENGTH:
-            gs.run_string(str)
+            gs.run_string(instance, str)
         else:
             gs.run_string_begin(instance)
             for start in range(0, len(str), MAX_STRING_LENGTH):
@@ -145,4 +143,4 @@ def cleanup():
         gs.delete_instance(__instance__)
         __instance__ = None
 
-atexit.register(cleanup)
+#atexit.register(cleanup)

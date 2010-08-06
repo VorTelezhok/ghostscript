@@ -125,7 +125,7 @@ def exit(instance):
     """
     rc = libgs.gsapi_exit(instance)
     if rc != 0:
-        raise RuntimeError()
+        raise GhostscriptError(rc)
     return rc
 
 
@@ -134,7 +134,7 @@ def run_string_begin(instance, user_errors=False):
     rc = libgs.gsapi_run_string_begin(instance, c_int(user_errors),
                                       pointer(exit_code))
     if rc != 0:
-        raise RuntimeError()
+        raise GhostscriptError(rc)
     return exit_code.value
 
 def run_string_continue(instance, str, user_errors=False):
@@ -142,8 +142,8 @@ def run_string_continue(instance, str, user_errors=False):
     rc = libgs.gsapi_run_string_continue(
         instance, c_char_p(str), c_int(len(str)),
         c_int(user_errors), pointer(exit_code))
-    if rc != 0:
-        raise RuntimeError()
+    if rc != e_NeedInput and rc != 0:
+        raise GhostscriptError(rc)
     return exit_code.value
 
 def run_string_end(instance, user_errors=False):
@@ -151,7 +151,7 @@ def run_string_end(instance, user_errors=False):
     rc = libgs.gsapi_run_string_end(instance, c_int(user_errors),
                                     pointer(exit_code))
     if rc != 0:
-        raise RuntimeError()
+        raise GhostscriptError(rc)
     return exit_code.value
 
 def run_string_with_length(*args, **kw):
@@ -160,11 +160,11 @@ def run_string_with_length(*args, **kw):
 
 def run_string(instance, str, user_errors=False):
     exit_code = c_int()
-    rc = libgs.gsapi_run_string_continue(
+    rc = libgs.gsapi_run_string_with_length(
         instance, c_char_p(str), c_int(len(str)),
         c_int(user_errors), pointer(exit_code))
     if rc != 0:
-        raise RuntimeError()
+        raise GhostscriptError(rc)
     return exit_code.value
 
 
@@ -173,7 +173,7 @@ def run_file(instance, filename, user_errors=False):
     rc = libgs.gsapi_run_file(instance, c_char_p(filename), 
                               c_int(user_errors), pointer(exit_code))
     if rc != 0:
-        raise RuntimeError()
+        raise GhostscriptError(rc)
     return exit_code.value
 
 
