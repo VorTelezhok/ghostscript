@@ -11,10 +11,7 @@ Python-Interface to the Ghostscript library
 :Author:  Hartmut Goebel <h.goebel@crazy-compiler.com>
 :Version: Version 0.2dev
 :Copyright: GNU Public License v3 (GPLv3)
-
-..
-  :Homepage: http://www.crazycompiler.com/
-
+:Homepage: http://bitbucket.org/htgoebel/python-ghostscript
 
 `Ghostscript`__, is a well known interpreter for the PostScript
 language and for PDF. This package implements a interface to the
