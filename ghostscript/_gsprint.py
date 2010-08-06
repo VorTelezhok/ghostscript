@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-ghostscript._gsprint - A low-lewel interface to the Ghostscript library using ctypes
+ghostscript._gsprint - A low-lewel interface to the Ghostscript C-API using ctypes
 """
 #
 # Copyright 2010 by Hartmut Goebel <h.goebel@goebel-consult.de>

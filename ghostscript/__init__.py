@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-ghostscript - A Python interface for the Ghostscript interpreter library
+ghostscript - A Python interface for the Ghostscript interpreter C-API
 """
 #
 # Copyright 2010 by Hartmut Goebel <h.goebel@goebel-consult.de>

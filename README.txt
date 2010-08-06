@@ -5,7 +5,7 @@
 ==========================
 
 ---------------------------------------------------------------------
-Python-Interface to the Ghostscript library
+Python-Interface to the Ghostscript C-API
 ---------------------------------------------------------------------
 
 :Author:  Hartmut Goebel <h.goebel@crazy-compiler.com>
@@ -15,8 +15,8 @@ Python-Interface to the Ghostscript library
 
 `Ghostscript`__, is a well known interpreter for the PostScript
 language and for PDF. This package implements a interface to the
-Ghostscript C-library using `ctypes`__. Both a low-level and a
-pythonic, high-level interface are provided.
+Ghostscript C-API using `ctypes`__. Both a low-level and a pythonic,
+high-level interface are provided.
 
 __ http://www.ghostscript.com/
 __ http://docs.python.org/library/ctypes.html

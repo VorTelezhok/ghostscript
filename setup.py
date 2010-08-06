@@ -41,7 +41,7 @@ setup(
     # metadata for upload to PyPI
     author = "Hartmut Goebel",
     author_email = "h.goebel@crazy-compilers.com",
-    description = ("Interface to the Ghostscript library, "
+    description = ("Interface to the Ghostscript C-API, "
                    "both high- and low-level, based on ctypes"),
     long_description = long_description,
     license = "GPL 3.0",
