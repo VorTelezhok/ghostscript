@@ -3,6 +3,12 @@
 Changes
 ==================
 
+:0.3 (in development):
+
+  * Added support for win32: The DLL to load is searched in registry.
+  * Removed relative imports, so older versions of Python can be used.
+  * Added nice project logo
+
 :0.2 (2010-08-06):
 
   * Fixed several bugs, esp. for running strings by Ghostscript.

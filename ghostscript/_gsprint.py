@@ -26,6 +26,7 @@ __licence__ = "GNU General Public License version 3 (GPL v3)"
 __version__ = "0.3dev"
 
 from ctypes import *
+import sys
 
 from _errors import *
 
@@ -180,5 +181,26 @@ def run_file(instance, filename, user_errors=False):
 def set_visual_tracer(I):
     raise NotImplementedError
 
+def __win32_finddll():
+    from _winreg import OpenKey, EnumKey, QueryValueEx, HKEY_LOCAL_MACHINE
+    version = dll_path = None
+    # :fixme: this assumes only a single version for Ghostscripts is
+    # installed and registry does only contain valid entries
+    for key_name in ("Software\\AFPL Ghostscript", "Software\\GPL Ghostscript"):
+        try:
+            k = OpenKey(HKEY_LOCAL_MACHINE, key_name)
+            version = EnumKey(k, 0)
+            k = OpenKey(k, version)
+            dll_path = QueryValueEx(k, 'GS_DLL')[0]
+            break
+        except WindowsError:
+            pass
+    return dll_path
 
-libgs = cdll.LoadLibrary("libgs.so.8")
+
+if sys.platform == 'win32':
+    libgs = windll.LoadLibrary(__win32_finddll())
+else:
+    libgs = cdll.LoadLibrary("libgs.so.8")
+
+del __win32_finddll
