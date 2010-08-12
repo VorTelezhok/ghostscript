@@ -8,3 +8,4 @@ dist
 *.egg
 *.egg-info
 *.egg-link
+projectlogo*.png

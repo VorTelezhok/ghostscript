@@ -1,0 +1,13 @@
+# -*- mode: python ; coding: utf-8 -*-
+#
+# Build requirements
+# - inkscape
+#
+
+# create PNG projectlogo for project homepage
+Command('projectlogo.png', 'projectlogo.svg',
+        'inkscape -z -f $SOURCE -e $TARGET --export-height=100')
+
+# create PNG projectlogo for bitbucket
+Command('projectlogo-32.png', 'projectlogo.svg',
+        'inkscape -z -f $SOURCE -e $TARGET --export-height=32')
