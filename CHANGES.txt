@@ -6,7 +6,15 @@ Changes
 :0.3 (in development):
 
   * Added support for win32: The DLL to load is searched in registry.
+
+  * On other platforms: Be more inteligent about finding Ghostscript
+    shared object file (fall back to ctypes.util.find_library() if
+    `libgs.8.so` can not be loaded
+
+  * Better error messages if lib/dll is not found.
+
   * Removed relative imports, so older versions of Python can be used.
+
   * Added nice project logo
 
 :0.2 (2010-08-06):

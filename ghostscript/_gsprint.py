@@ -199,8 +199,19 @@ def __win32_finddll():
 
 
 if sys.platform == 'win32':
-    libgs = windll.LoadLibrary(__win32_finddll())
+    libgs = __win32_finddll()
+    if not libgs:
+        raise RuntimeError('Can not find Ghostscript DLL in registry')
+    libgs = windll.LoadLibrary(libgs)
 else:
-    libgs = cdll.LoadLibrary("libgs.so.8")
+    try:
+        libgs = cdll.LoadLibrary("libgs.so.8")
+    except OSError:
+        # shared object file not found
+        import ctypes.util
+        libgs = ctypes.util.find_libary('gs')
+        if not libgs:
+            raise RuntimeError('Can not find Ghostscript library (libgs)')
+        libgs = cdll.LoadLibrary(libgs)
 
 del __win32_finddll
