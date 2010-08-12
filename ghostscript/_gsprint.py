@@ -27,7 +27,7 @@ __version__ = "0.3dev"
 
 from ctypes import *
 
-from . _errors import *
+from _errors import *
 
 MAX_STRING_LENGTH = 65535
 
