@@ -23,7 +23,7 @@ ghostscript - A Python interface for the Ghostscript interpreter C-API
 __author__ = "Hartmut Goebel <h.goebel@crazy-compilers.com>"
 __copyright__ = "Copyright 2010 by Hartmut Goebel <h.goebel@crazy-compilers.com>"
 __licence__ = "GNU General Public License version 3 (GPL v3)"
-__version__ = "0.3"
+__version__ = "0.4dev"
 
 __all__ = ['Ghostscript', 'revision',
            'GhostscriptError', 'PleaseDisplayUsage']

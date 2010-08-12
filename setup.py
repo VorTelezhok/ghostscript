@@ -28,7 +28,7 @@ long_description="\n\n".join([
 
 setup(
     name = "ghostscript",
-    version = "0.3",
+    version = "0.4dev",
     install_requires = ['setuptools'],
 
     packages=find_packages(exclude=['ez_setup']),
