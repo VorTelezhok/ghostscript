@@ -46,6 +46,31 @@ Here is an example for how to use the high-level interface of
 
   ghostscript.Ghostscript(*args)
 
+Here an example for passing a string document to Ghostscript::
+
+  doc = """%!
+  /Helvetica findfont 20 scalefont setfont       
+  50 50 moveto
+  (Hello World) show
+  showpage
+  """
+
+  import ghostscript
+
+  args = """test.py
+       -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pdfwrite -sOutputFile=/tmp/out.pdf
+       -c .setpdfwrite""".split()
+
+  GS = ghostscript.Ghostscript(*args)
+  try:
+      GS.run_string(doc)
+  finally:
+      GS.exit()
+
+
+More examples can be found in the `examples` subdirectory of the
+distribution archive.
+
 
 Requirements and Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
