@@ -23,7 +23,7 @@ ghostscript._gsprint - A low-lewel interface to the Ghostscript C-API using ctyp
 __author__ = "Hartmut Goebel <h.goebel@crazy-compilers.com>"
 __copyright__ = "Copyright 2010 by Hartmut Goebel <h.goebel@crazy-compilers.com>"
 __licence__ = "GNU General Public License version 3 (GPL v3)"
-__version__ = "0.3dev"
+__version__ = "0.3"
 
 from ctypes import *
 import sys

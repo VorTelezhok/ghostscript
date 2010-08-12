@@ -3,7 +3,7 @@
 Changes
 ==================
 
-:0.3 (in development):
+:0.3 (2010-08-12):
 
   * Added support for win32: The DLL to load is searched in registry.
 
