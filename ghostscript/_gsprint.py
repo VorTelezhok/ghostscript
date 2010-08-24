@@ -186,9 +186,10 @@ def __win32_finddll():
     version = dll_path = None
     # :fixme: this assumes only a single version for Ghostscripts is
     # installed and registry does only contain valid entries
-    for key_name in ("Software\\AFPL Ghostscript", "Software\\GPL Ghostscript"):
+    for key_name in ('AFPL Ghostscript', 'Aladdin Ghostscript',
+                     'GPL Ghostscript', 'GNU Ghostscript'):
         try:
-            k = OpenKey(HKEY_LOCAL_MACHINE, key_name)
+            k = OpenKey(HKEY_LOCAL_MACHINE, "Software\\%s" % key_name)
             version = EnumKey(k, 0)
             k = OpenKey(k, version)
             dll_path = QueryValueEx(k, 'GS_DLL')[0]
