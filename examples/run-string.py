@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 
-Simple test program usinf run_string() and run_file()
+Simple test program using run_string() and run_file()
 
 """
 # -*- coding: utf-8 -*-
