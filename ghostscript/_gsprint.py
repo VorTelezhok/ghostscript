@@ -193,7 +193,8 @@ def __win32_finddll():
             version = EnumKey(k, 0)
             k = OpenKey(k, version)
             dll_path = QueryValueEx(k, 'GS_DLL')[0]
-            break
+            if os.path.exists(dll_path):
+                break
         except WindowsError:
             pass
     return dll_path
