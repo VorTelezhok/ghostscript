@@ -183,21 +183,34 @@ def set_visual_tracer(I):
 
 def __win32_finddll():
     from _winreg import OpenKey, EnumKey, QueryValueEx, HKEY_LOCAL_MACHINE
-    version = dll_path = None
-    # :fixme: this assumes only a single version for Ghostscripts is
-    # installed and registry does only contain valid entries
+    from distutils.version import LooseVersion
+    import os
+
+    dlls = []
+    # Look up different variants of Ghostscript and take the highest
+    # version for which the DLL is to be found in the filesystem.
     for key_name in ('AFPL Ghostscript', 'Aladdin Ghostscript',
                      'GPL Ghostscript', 'GNU Ghostscript'):
         try:
-            k = OpenKey(HKEY_LOCAL_MACHINE, "Software\\%s" % key_name)
-            version = EnumKey(k, 0)
-            k = OpenKey(k, version)
-            dll_path = QueryValueEx(k, 'GS_DLL')[0]
-            if os.path.exists(dll_path):
-                break
+            k1 = OpenKey(HKEY_LOCAL_MACHINE, "Software\\%s" % key_name)
+            for num in range(0, QueryInfoKey(k1)[0]):
+                version = EnumKey(k1, num)
+                try:
+                    k2 = OpenKey(k1, version)
+                    dll_path = QueryValueEx(k2, 'GS_DLL')[0]
+                    CloseKey(k2)
+                    if os.path.exists(dll_path):
+                        dlls.append((LooseVersion(version), dll_path))
+                except WindowsError:
+                    pass
+            CloseKey(k1)    
         except WindowsError:
             pass
-    return dll_path
+    if dlls:
+        sort(dlls)
+        return dlls[-1][-1]
+    else:
+        return None
 
 
 if sys.platform == 'win32':
