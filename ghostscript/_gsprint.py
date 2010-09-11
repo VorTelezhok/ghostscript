@@ -90,9 +90,69 @@ def delete_instance(instance):
     return libgs.gsapi_delete_instance(instance)
 
 
-GSDLLCALL = CFUNCTYPE(gs_main_instance, POINTER(c_char), c_int)
+c_stdstream_call_t = CFUNCTYPE(c_int, gs_main_instance, POINTER(c_char), c_int)
 
-# :todo:  set_stdio(instance, stdin, stdout, stderr):
+def _wrap_stdin(infp):
+    """
+    Wrap a filehandle into a C function to be used as `stdin` callback
+    for ``set_stdio``. The filehandle has to support the readline() method.
+    """
+    
+    def _wrap(instance, dest, count):
+        try:
+            data = infp.readline(count)
+        except:
+            count = -1
+        else:
+            if not data:
+                count = 0
+            else:
+                count = len(data)
+                memmove(dest, c_char_p(data), count)
+        return count
+
+    return c_stdstream_call_t(_wrap)
+
+def _wrap_stdout(outfp):
+    """
+    Wrap a filehandle into a C function to be used as `stdout` or
+    `stderr` callback for ``set_stdio``. The filehandle has to support the
+    write() and flush() methods.
+    """
+
+    def _wrap(instance, str, count):
+        outfp.write(str[:count])
+        outfp.flush()
+        return count
+
+    return c_stdstream_call_t(_wrap)
+
+_wrap_stderr = _wrap_stdout
+
+
+def set_stdio(instance, stdin, stdout, stderr):
+    """
+    Set the callback functions for stdio.
+
+    ``stdin``, ``stdout`` and ``stderr`` have to be ``ctypes``
+    callback functions matching the ``_gsprint.c_stdstream_call_t``
+    prototype. You may want to use _wrap_* to wrap file handles.
+
+    Please note: Make sure you keep references to C function objects
+    as long as they are used from C code. Otherwise they may be
+    garbage collected, crashing your program when a callback is made
+
+    The ``stdin`` callback function should return the number of
+    characters read, `0` for EOF, or `-1` for error. The `stdout` and
+    `stderr` callback functions should return the number of characters
+    written.
+    """
+    rc = libgs.gsapi_set_stdio(instance, stdin, stdout, stderr)
+    if rc not in (0, e_Quit, e_Info):
+        raise GhostscriptError(rc)
+    return rc
+
+
 # :todo:  set_poll (instance, int(*poll_fn)(void *caller_handle));
 # :todo:  set_display_callback(instance, callback):
 
