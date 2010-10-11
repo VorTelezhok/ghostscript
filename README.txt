@@ -15,10 +15,11 @@ Python-Interface to the Ghostscript C-API
 
 `Ghostscript`__, is a well known interpreter for the PostScript
 language and for PDF. This package implements a interface to the
-Ghostscript C-API using `ctypes`__. Both a low-level and a pythonic,
+`Ghostscript C-API`__ using `ctypes`__. Both a low-level and a pythonic,
 high-level interface are provided.
 
 __ http://www.ghostscript.com/
+__ http://pages.cs.wisc.edu/~ghost/doc/cvs/API.htm
 __ http://docs.python.org/library/ctypes.html
 
 
