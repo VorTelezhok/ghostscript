@@ -284,7 +284,7 @@ else:
     except OSError:
         # shared object file not found
         import ctypes.util
-        libgs = ctypes.util.find_libary('gs')
+        libgs = ctypes.util.find_library('gs')
         if not libgs:
             raise RuntimeError('Can not find Ghostscript library (libgs)')
         libgs = cdll.LoadLibrary(libgs)
