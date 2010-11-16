@@ -9,7 +9,7 @@ Python-Interface to the Ghostscript C-API
 ---------------------------------------------------------------------
 
 :Author:  Hartmut Goebel <h.goebel@crazy-compiler.com>
-:Version: Version 0.4dev
+:Version: 0.4dev
 :Copyright: GNU Public License v3 (GPLv3)
 :Homepage: http://bitbucket.org/htgoebel/python-ghostscript
 
@@ -84,7 +84,7 @@ Requirements and Installation
 
 * `Python`__ 2.3 or higher (tested with Python 2.6)
 * `ctypes`__ when using Python 2.3 or 2.4 (`ctypes` is already
-             included in Python 2.5 and higher)
+  included in Python 2.5 and higher)
 * `setuptools`__ or `distribute`__ for installation (see below).
 * `Ghostscript`__ Version 8.x
 
