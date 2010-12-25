@@ -25,7 +25,7 @@
    xml:space="preserve"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.47 r22583"
+   inkscape:version="0.48.0 r9654"
    sodipodi:docname="projectlogo.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    inkscape:export-filename="/home/hartmut/projekte/software/openoffice/openoffice-python.png"
@@ -43,10 +43,10 @@
      offset="1"
      id="stop4375" /></linearGradient><linearGradient
    id="linearGradient4365"><stop
-     style="stop-color:#5a9fd4;stop-opacity:1;"
+     style="stop-color:#d1e5f3;stop-opacity:1;"
      offset="0"
      id="stop4367" /><stop
-     style="stop-color:#306998;stop-opacity:1;"
+     style="stop-color:#5293c8;stop-opacity:1;"
      offset="1"
      id="stop4369" /></linearGradient><linearGradient
    inkscape:collect="always"
@@ -57,9 +57,8 @@
      style="stop-color:#000000;stop-opacity:0;"
      offset="1"
      id="stop4361" /></linearGradient><linearGradient
-   inkscape:collect="always"
    id="linearGradient4343"><stop
-     style="stop-color:#000000;stop-opacity:1;"
+     style="stop-color:#000000;stop-opacity:0.24782608;"
      offset="0"
      id="stop4345" /><stop
      style="stop-color:#000000;stop-opacity:0;"
@@ -396,8 +395,8 @@
    x2="1125.6263"
    y2="-173.71344"
    gradientUnits="userSpaceOnUse" /></defs><sodipodi:namedview
-   inkscape:window-height="966"
-   inkscape:window-width="1276"
+   inkscape:window-height="991"
+   inkscape:window-width="1400"
    inkscape:pageshadow="2"
    inkscape:pageopacity="0.0"
    guidetolerance="10.0"
@@ -407,10 +406,10 @@
    bordercolor="#666666"
    pagecolor="#ffffff"
    id="base"
-   inkscape:zoom="0.26345961"
-   inkscape:cx="-338.6566"
-   inkscape:cy="315.72932"
-   inkscape:window-x="-1"
+   inkscape:zoom="0.74517631"
+   inkscape:cx="168.35516"
+   inkscape:cy="266.49296"
+   inkscape:window-x="-3"
    inkscape:window-y="-3"
    inkscape:current-layer="layer4"
    width="320px"
@@ -440,7 +439,7 @@
 <rdf:RDF><cc:Work
      rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
        rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title>python-ghostsctipt project logo</dc:title><dc:contributor><cc:Agent><dc:title>lemmling, see http://www.openclipart.org/detail/17847</dc:title></cc:Agent></dc:contributor><cc:license
-       rdf:resource="http://creativecommons.org/licenses/publicdomain/" /><dc:date>2010-08-12</dc:date><dc:creator><cc:Agent><dc:title></dc:title></cc:Agent></dc:creator></cc:Work><cc:License
+       rdf:resource="http://creativecommons.org/licenses/publicdomain/" /><dc:date>2010-08-12</dc:date><dc:creator><cc:Agent><dc:title /></cc:Agent></dc:creator></cc:Work><cc:License
      rdf:about="http://creativecommons.org/licenses/publicdomain/"><cc:permits
        rdf:resource="http://creativecommons.org/ns#Reproduction" /><cc:permits
        rdf:resource="http://creativecommons.org/ns#Distribution" /><cc:permits
@@ -459,7 +458,7 @@
      style="fill:#dbdbe3;fill-opacity:0.62745098;fill-rule:nonzero;stroke:none" /><path
      d="m 1302.6522,-85.361603 c 0,164.390332 66.7318,206.768873 66.7318,283.011513 0,42.28742 -91.1423,11.43719 -128.171,32.81577 -34.3437,19.82838 -20.2747,49.69698 -69.7221,68.86025 -35.5261,13.76806 -82.8939,-49.00202 -132.3396,-49.00202 -39.44063,0 -112.23523,52.90685 -146.42425,36.09104 -34.18901,-16.81583 -30.94618,-72.83743 -83.80686,-78.25007 -39.45041,-4.03951 -139.90817,50.55206 -139.90817,8.26463 0,-53.85568 62.03691,-112.52485 62.03691,-301.791113 0,-183.354717 128.03913,-332.164347 285.80157,-332.164347 157.7625,0 285.8017,148.80963 285.8017,332.164347 z"
      id="path2383"
-     style="fill:url(#linearGradient3729);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:7.45787907;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1" /><path
+     style="fill:url(#linearGradient3729);fill-opacity:1.0;fill-rule:nonzero;stroke:#000000;stroke-width:7.45787906999999972;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1" /><path
      d="m 922.63486,-253.51526 c -38.33928,3e-5 -69.454,35.75003 -69.454,79.80182 4e-5,44.05176 31.11472,79.801812 69.454,79.801812 29.62322,1.9e-5 54.92698,-21.367912 64.90428,-51.392942 9.97731,30.02503 35.28106,51.392961 64.90426,51.392942 38.3393,0 69.454,-35.750052 69.454,-79.801812 0,-44.05179 -31.1147,-79.80179 -69.454,-79.80182 -29.6174,0 -54.92288,21.30588 -64.90426,51.32157 -9.98138,-30.01569 -35.28688,-51.32157 -64.90428,-51.32157 z"
      id="path2387"
      style="fill:url(#linearGradient4391);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:7.45787477;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" /><path
