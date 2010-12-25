@@ -10,3 +10,7 @@ dist
 *.egg-link
 projectlogo*.png
 .sconsign.dblite
+
+syntax: regexp
+
+^stuff/.*
