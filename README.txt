@@ -9,7 +9,7 @@ Python-Interface to the Ghostscript C-API
 ---------------------------------------------------------------------
 
 :Author:  Hartmut Goebel <h.goebel@crazy-compiler.com>
-:Version: 0.4
+:Version: 0.5dev
 :Copyright: GNU Public License v3 (GPLv3)
 :Homepage: http://bitbucket.org/htgoebel/python-ghostscript
 
