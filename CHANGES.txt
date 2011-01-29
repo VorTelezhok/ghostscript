@@ -3,6 +3,23 @@
 Changes
 ==================
 
+:0.4 (2011-01-29):
+
+  * Fixed typo in function call name ctypes.util.find_library
+
+  * (Unix) No longer try to load a specific version (version 8) of
+    libgs.so
+
+  * Added low-level interface for set_stdio() plus wrappers for
+    file handles
+
+  * (win32) Improved search for best Ghostscript installation:
+    Consider Aladdin and GNU Ghostscript, too; Check for existence of
+    DLL found in registry; take highest version available.
+
+  * Added win32 example-batch file for testing and other
+    improvements/fixes on examples an documentation.
+
 :0.3 (2010-08-12):
 
   * Added support for win32: The DLL to load is searched in registry.
@@ -25,3 +42,4 @@ Changes
 
   * This is the first public release of the Python Ghostscript C-API
     interface.
+
