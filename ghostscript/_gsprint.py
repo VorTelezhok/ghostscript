@@ -242,7 +242,8 @@ def set_visual_tracer(I):
     raise NotImplementedError
 
 def __win32_finddll():
-    from _winreg import OpenKey, EnumKey, QueryValueEx, HKEY_LOCAL_MACHINE
+    from _winreg import OpenKey, CloseKey, EnumKey, QueryValueEx, \
+        QueryInfoKey, HKEY_LOCAL_MACHINE
     from distutils.version import LooseVersion
     import os
 
@@ -267,7 +268,7 @@ def __win32_finddll():
         except WindowsError:
             pass
     if dlls:
-        sort(dlls)
+        dlls.sort()
         return dlls[-1][-1]
     else:
         return None
