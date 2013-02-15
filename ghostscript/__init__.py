@@ -52,7 +52,7 @@ def revision():
     loaded.
     """
     rev = gs.revision()
-    return dict((f, getattr(rev, f)) for f in rev._fields_)
+    return dict((f, getattr(rev, f)) for f, _ in rev._fields_)
 
 
 MAX_STRING_LENGTH = gs.MAX_STRING_LENGTH
