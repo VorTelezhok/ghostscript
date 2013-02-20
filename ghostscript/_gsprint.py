@@ -241,6 +241,127 @@ def run_file(instance, filename, user_errors=False):
 def set_visual_tracer(I):
     raise NotImplementedError
 
+    
+# New device has been opened
+# This is the first event from this device.
+# int (*display_open)(void *handle, void *device);
+c_display_open = CFUNCTYPE(c_int, c_void_p, c_void_p)
+
+# Device is about to be closed.
+# Device will not be closed until this function returns.
+#int (*display_preclose)(void *handle, void *device);
+c_display_preclose = CFUNCTYPE(c_int, c_void_p, c_void_p)
+
+# Device has been closed.
+# This is the last event from this device.
+# int (*display_close)(void *handle, void *device);
+c_display_close = CFUNCTYPE(c_int, c_void_p, c_void_p)
+
+# Device is about to be resized.
+# Resize will only occur if this function returns 0.
+# raster is byte count of a row.
+# int (*display_presize)(void *handle, void *device,
+# int width, int height, int raster, unsigned int format);
+c_display_presize = CFUNCTYPE(c_int, c_void_p, c_void_p,
+    c_int, c_int, c_int, c_uint)
+
+# Device has been resized.
+# New pointer to raster returned in pimage
+# int (*display_size)(void *handle, void *device, int width, int height, 
+# int raster, unsigned int format, unsigned char *pimage);
+c_display_size = CFUNCTYPE(c_int, c_void_p, c_void_p,
+    c_int, c_int, c_int, c_uint, POINTER(c_ubyte))
+
+# flushpage
+#int (*display_sync)(void *handle, void *device);
+c_display_sync = CFUNCTYPE(c_int, c_void_p, c_void_p)
+
+# showpage
+# If you want to pause on showpage, then don't return immediately
+# int (*display_page)(void *handle, void *device, int copies, int flush);
+c_display_page  = CFUNCTYPE(c_int, c_void_p, c_void_p,
+    c_int, c_int)
+
+# Notify the caller whenever a portion of the raster is updated.
+# This can be used for cooperative multitasking or for
+# progressive update of the display.
+# This function pointer may be set to NULL if not required.
+# int (*display_update)(void *handle, void *device, int x, int y, 
+# int w, int h);
+c_display_update = CFUNCTYPE(c_int, c_void_p, c_void_p,
+    c_int, c_int, c_int, c_int)
+
+# Allocate memory for bitmap
+# This is provided in case you need to create memory in a special
+# way, e.g. shared.  If this is NULL, the Ghostscript memory device 
+# allocates the bitmap. This will only called to allocate the
+# image buffer. The first row will be placed at the address 
+# returned by display_memalloc.
+# void *(*display_memalloc)(void *handle, void *device, unsigned long size);
+c_display_memalloc = CFUNCTYPE(c_void_p, c_void_p, c_void_p, c_ulong) 
+
+# Free memory for bitmap
+# If this is NULL, the Ghostscript memory device will free the bitmap
+# int (*display_memfree)(void *handle, void *device, void *mem);
+c_display_memfree = CFUNCTYPE(c_int, c_void_p, c_void_p, c_void_p)
+
+# Added in V2 */
+# When using separation color space (DISPLAY_COLORS_SEPARATION),
+# give a mapping for one separation component.
+# This is called for each new component found.
+# It may be called multiple times for each component.
+# It may be called at any time between display_size
+# and display_close.
+# The client uses this to map from the separations to CMYK
+# and hence to RGB for display.
+# GS must only use this callback if version_major >= 2.
+# The unsigned short c,m,y,k values are 65535 = 1.0.
+# This function pointer may be set to NULL if not required.
+#
+# int (*display_separation)(void *handle, void *device,
+# int component, const char *component_name,
+# unsigned short c, unsigned short m, 
+# unsigned short y, unsigned short k);
+c_display_separation = CFUNCTYPE(c_int, c_void_p, c_void_p,
+    c_int, c_char_p, c_ushort, c_ushort, c_ushort, c_ushort)
+
+class Display_callback_s (Structure):
+    _fields_ = [
+        # Size of this structure
+        # Used for checking if we have been handed a valid structure
+        # int size;
+        ("size", c_int),
+        
+        # Major version of this structure
+        # The major version number will change if this structure changes.
+        # int version_major;
+        ("version_major", c_int),
+        
+        # Minor version of this structure
+        # The minor version number will change if new features are added
+        # without changes to this structure.  For example, a new color
+        # format.
+        #int version_minor;
+        ("version_minor", c_int),
+        ("display_open", c_display_open),
+        ("display_preclose", c_display_preclose),
+        ("display_close", c_display_close),
+        ("display_presize", c_display_presize),
+        ("display_size", c_display_size),
+        ("display_sync", c_display_sync),
+        ("display_page", c_display_page),
+        ("display_update", c_display_update),
+        ("display_memalloc", c_display_memalloc),
+        ("display_memfree", c_display_memfree),
+        ("display_separation", c_display_separation)
+    ]
+
+def set_display_callback(instance, callback):
+    rc = libgs.gsapi_set_display_callback(instance, callback)
+    if rc != 0:
+        raise GhostscriptError(rc)
+    return rc
+
 def __win32_finddll():
     from _winreg import OpenKey, CloseKey, EnumKey, QueryValueEx, \
         QueryInfoKey, HKEY_LOCAL_MACHINE
