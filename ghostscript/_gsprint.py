@@ -32,6 +32,91 @@ from _errors import *
 
 MAX_STRING_LENGTH = 65535
 
+DISPLAY_VERSION_MAJOR = 2
+DISPLAY_VERSION_MINOR  = 0
+
+DISPLAY_VERSION_MAJOR_V1 = 1 # before separation format was added
+DISPLAY_VERSION_MINOR_V1 = 0
+
+# The display format is set by a combination of the following bitfields
+
+# Define the color space alternatives
+# DISPLAY_FORMAT_COLOR
+DISPLAY_COLORS_NATIVE     = (1<<0)
+DISPLAY_COLORS_GRAY       = (1<<1)
+DISPLAY_COLORS_RGB        = (1<<2)
+DISPLAY_COLORS_CMYK       = (1<<3)
+DISPLAY_COLORS_SEPARATION = (1<<19)
+
+DISPLAY_COLORS_MASK = 0x8000f
+
+# Define whether alpha information, or an extra unused bytes is included
+# DISPLAY_ALPHA_FIRST and DISPLAY_ALPHA_LAST are not implemented
+# DISPLAY_FORMAT_ALPHA
+DISPLAY_ALPHA_NONE   = (0<<4)
+DISPLAY_ALPHA_FIRST  = (1<<4)
+DISPLAY_ALPHA_LAST   = (1<<5)
+DISPLAY_UNUSED_FIRST = (1<<6) # e.g. Mac xRGB
+DISPLAY_UNUSED_LAST  = (1<<7) # e.g. Windows BGRx
+
+DISPLAY_ALPHA_MASK = 0x00f0
+
+# Define the depth per component for DISPLAY_COLORS_GRAY,
+# DISPLAY_COLORS_RGB and DISPLAY_COLORS_CMYK,
+# or the depth per pixel for DISPLAY_COLORS_NATIVE
+# DISPLAY_DEPTH_2 and DISPLAY_DEPTH_12 have not been tested.
+# DISPLAY_FORMAT_DEPTH
+DISPLAY_DEPTH_1  = (1<< 8)
+DISPLAY_DEPTH_2  = (1<< 9)
+DISPLAY_DEPTH_4  = (1<<10)
+DISPLAY_DEPTH_8  = (1<<11)
+DISPLAY_DEPTH_12 = (1<<12)
+DISPLAY_DEPTH_16 = (1<<13)
+# unused (1<<14)
+# unused (1<<15)
+
+DISPLAY_DEPTH_MASK = 0xff00
+
+# Define whether Red/Cyan should come first,
+# or whether Blue/Black should come first
+# DISPLAY_FORMAT_ENDIAN
+DISPLAY_BIGENDIAN    = (0<<16) # Red/Cyan first
+DISPLAY_LITTLEENDIAN = (1<<16) # Blue/Black first
+
+DISPLAY_ENDIAN_MASK = 0x00010000
+
+# Define whether the raster starts at the top or bottom of the bitmap
+# DISPLAY_FORMAT_FIRSTROW
+DISPLAY_TOPFIRST    = (0<<17) # Unix, Mac
+DISPLAY_BOTTOMFIRST = (1<<17) # Windows
+
+DISPLAY_FIRSTROW_MASK = 0x00020000
+
+# Define whether packing RGB in 16-bits should use 555
+# or 565 (extra bit for green)
+# DISPLAY_FORMAT_555
+DISPLAY_NATIVE_555 = (0<<18),
+DISPLAY_NATIVE_565 = (1<<18)
+
+DISPLAY_555_MASK = 0x00040000
+
+# Define the row alignment, which must be equal to or greater than
+# the size of a pointer.
+# The default (DISPLAY_ROW_ALIGN_DEFAULT) is the size of a pointer,
+# 4 bytes (DISPLAY_ROW_ALIGN_4) on 32-bit systems or 8 bytes
+# (DISPLAY_ROW_ALIGN_8) on 64-bit systems.
+# DISPLAY_FORMAT_ROW_ALIGN
+DISPLAY_ROW_ALIGN_DEFAULT = (0<<20)
+# DISPLAY_ROW_ALIGN_1 = (1<<20), # not currently possible
+# DISPLAY_ROW_ALIGN_2 = (2<<20), # not currently possible
+DISPLAY_ROW_ALIGN_4  = (3<<20)
+DISPLAY_ROW_ALIGN_8  = (4<<20)
+DISPLAY_ROW_ALIGN_16 = (5<<20)
+DISPLAY_ROW_ALIGN_32 = (6<<20)
+DISPLAY_ROW_ALIGN_64 = (7<<20)
+
+DISPLAY_ROW_ALIGN_MASK = 0x00700000
+
 class Revision(Structure):
     _fields_ = [
         ("product", c_char_p),
