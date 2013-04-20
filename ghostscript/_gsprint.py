@@ -6,6 +6,8 @@ ghostscript._gsprint - A low-lewel interface to the Ghostscript C-API using ctyp
 #
 # Copyright 2010 by Hartmut Goebel <h.goebel@goebel-consult.de>
 #
+# Display_callback Structure by Lasse Fister <commander@graphicore.de> in 2013
+#
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
