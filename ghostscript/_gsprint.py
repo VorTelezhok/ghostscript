@@ -95,7 +95,7 @@ DISPLAY_FIRSTROW_MASK = 0x00020000
 # Define whether packing RGB in 16-bits should use 555
 # or 565 (extra bit for green)
 # DISPLAY_FORMAT_555
-DISPLAY_NATIVE_555 = (0<<18),
+DISPLAY_NATIVE_555 = (0<<18)
 DISPLAY_NATIVE_565 = (1<<18)
 
 DISPLAY_555_MASK = 0x00040000
@@ -128,10 +128,11 @@ class Revision(Structure):
 gs_main_instance = c_void_p
 display_callback = c_void_p
 
-class GhostscriptError(RuntimeError):
+class GhostscriptError(Exception):
     def __init__(self, ecode):
          # :todo:
-         RuntimeError.__init__(self, error2name(ecode))
+         Exception.__init__(self, error2name(ecode))
+         self.code = ecode
 
 def revision():
     """
