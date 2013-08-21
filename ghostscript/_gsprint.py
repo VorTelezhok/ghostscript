@@ -30,7 +30,7 @@ __version__ = "0.5dev"
 from ctypes import *
 import sys
 
-from _errors import *
+from ._errors import *
 
 MAX_STRING_LENGTH = 65535
 
@@ -451,7 +451,7 @@ def set_display_callback(instance, callback):
     return rc
 
 def __win32_finddll():
-    from _winreg import OpenKey, CloseKey, EnumKey, QueryValueEx, \
+    from winreg import OpenKey, CloseKey, EnumKey, QueryValueEx, \
         QueryInfoKey, HKEY_LOCAL_MACHINE
     from distutils.version import LooseVersion
     import os

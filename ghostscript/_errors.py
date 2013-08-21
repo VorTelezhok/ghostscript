@@ -174,7 +174,7 @@ def ERROR_IS_INTERRUPT(ecode):
     return ecode == e_interrupt or ecode == e_timeout
 
 if __name__ == '__main__':
-    print error2name(e_unknownerror) == "unknownerror"
-    print error2name(e_VMerror) == "VMerror"
-    print error2name(e_invalidid) == "invalidid"
-    print error2name(e_VMreclaim) == "VMreclaim"
+    print(error2name(e_unknownerror) == "unknownerror")
+    print(error2name(e_VMerror) == "VMerror")
+    print(error2name(e_invalidid) == "invalidid")
+    print(error2name(e_VMreclaim) == "VMreclaim")

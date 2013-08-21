@@ -30,7 +30,7 @@ __all__ = ['Ghostscript', 'revision',
 
 import atexit
 import sys # :todo: remove, debugging only
-import _gsprint as gs
+from . import _gsprint as gs
 
 GhostscriptError = gs.GhostscriptError
 

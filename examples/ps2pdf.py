@@ -41,8 +41,8 @@ while args:
         break
 
 def usage():
-    print >> sys.stderr, "Usage:", os.path.basename(sys.argv[0]), \
-          "[options...] (input.[e]ps|-) [output.pdf|-]"
+    print("Usage:", os.path.basename(sys.argv[0]), \
+          "[options...] (input.[e]ps|-) [output.pdf|-]", file=sys.stderr)
     sys.exit(1)
     
 if len(args) not in (1,2):

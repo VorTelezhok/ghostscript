@@ -39,7 +39,7 @@ setfont
 showpage
 """
 
-import StringIO
+import io
 import ghostscript
 
 args = """test.py
@@ -49,6 +49,6 @@ args = """test.py
 GS = ghostscript.Ghostscript(*args)
 try:
     GS.run_string(doc)
-    GS.run_file(StringIO.StringIO(doc))
+    GS.run_file(io.StringIO(doc))
 finally:
     GS.exit()
